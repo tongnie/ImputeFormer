@@ -1,0 +1,44 @@
+adj_threshold: 0.1
+batch_size: 32
+condition_on_u: true
+dataset_name: la_point
+epochs: 300
+grad_clip_val: 5.0
+horizon_lag: 1
+l2_reg: 0.0
+loss_fn: l1_loss
+mask_scaling: true
+lr: 0.001
+lr_scheduler: magic
+model_name: imputeformer
+num_nodes: 207
+
+
+input_dim: 3
+output_dim: 1
+input_embedding_dim: 32 
+learnable_embedding_dim: 96  
+dim_proj: 6
+feed_forward_dim: 256
+num_temporal_heads: 4
+num_layers: 3
+f1_loss_weight: 0 
+dropout: 0.1
+patience: 20
+prediction_loss_weight: 1.0
+scale_target: true
+seed: 42
+split_batch_in: 1
+stride: 1
+test_len: 0.2
+u_size: null
+val_len: 0.1
+whiten_prob:
+- 0.2
+- 0.5
+- 0.8
+window: 24
+window_lag: 1
+workers: 0
+
+
