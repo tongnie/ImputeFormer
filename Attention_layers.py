@@ -120,9 +120,19 @@ class EmbeddedAttention(nn.Module):
         # Q, K (..., length, model_dim)
         # V (batch_size, ..., length, model_dim)
         key = key.transpose(-1, -2)  # (..., model_dim, src_length)
-        attn_score = query @ key  # (..., tgt_length, src_length)
-        attn_score = torch.softmax(attn_score, dim=-1)
-        attn_score = repeat(attn_score, 'n s1 s2 -> b n s1 s2', b=batch_size)
-        out = attn_score @ value  # (batch_size, ..., tgt_length, model_dim)
+        # attn_score = query @ key  # (..., tgt_length, src_length)
+        # attn_score = torch.softmax(attn_score, dim=-1)
+        # attn_score = repeat(attn_score, 'n s1 s2 -> b n s1 s2', b=batch_size)
+
+        # re-normalization
+        query = torch.softmax(query, dim=-1)
+        key = torch.softmax(key, dim=-1)
+        query = repeat(query, 'n s1 s2 -> b n s1 s2', b=batch_size)
+        key = repeat(key, 'n s2 s1 -> b n s2 s1', b=batch_size)
+        # re-normalization
+
+        # out = attn_score @ value  # (batch_size, ..., tgt_length, model_dim)
+        out = key @ value  # (batch_size, ..., tgt_length, model_dim)
+        out = query @ out  # (batch_size, ..., tgt_length, model_dim)
 
         return out
