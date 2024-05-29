@@ -17,4 +17,4 @@ If you find this code useful please consider to cite our paper:
 
 ## Acknowledgement
 
-We acknowledge [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) for providing a useful benchmark tool.
+We acknowledge [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) for providing a useful benchmark tool and [TorchSpatiotemporal](https://github.com/TorchSpatiotemporal) for model implementations.
