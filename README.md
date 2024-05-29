@@ -46,7 +46,7 @@ Following the instructions in [SPIN](https://github.com/Graph-Machine-Learning-G
 
 ```bash
 conda env create -f conda_env.yml
-conda activate spin
+conda activate imputeformer
 ```
 
 ## Google Scholar
