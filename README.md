@@ -49,6 +49,26 @@ conda env create -f conda_env.yml
 conda activate imputeformer
 ```
 
+
+# Run experiments
+
+The experiment scripts are in the `experiments` folder.
+
+* `run_imputation.py` is used to run models including both ImputeFormer and baselines. An example of usage is
+
+	```bash
+	conda activate imputeformer
+	python ./experiments/run_imputation.py --config imputation/imputeformer_la.yaml --model-name imputeformer --dataset-name la_block
+	```
+
+* `run_inference.py` is used for inference only using pre-trained models. An example of usage is
+
+	```bash
+	conda activate imputeformer
+	python ./experiments/run_inference.py --config inference.yaml --model-name imputeformer --dataset-name la_point --exp-name {exp_name}
+	```
+
+
 ## Google Scholar
 **Due to the minor change of ImputeFormer's title, you can simply search for "ImputeFormer" in Google Scholar to get our latest version. Citation information is automatically updated as the proceedings become available.**
 
@@ -67,4 +87,4 @@ If you find this code useful please consider to cite our paper:
 
 ## Acknowledgement
 
-We acknowledge [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) for providing a useful benchmark tool and [TorchSpatiotemporal](https://github.com/TorchSpatiotemporal) for model implementations.
+We acknowledge [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) for providing a useful benchmark tool and training pipeline and [TorchSpatiotemporal](https://github.com/TorchSpatiotemporal) for helpful model implementations.
