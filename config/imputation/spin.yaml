@@ -1,0 +1,32 @@
+##########################        SPIN CONFIG        ##########################
+
+#### Dataset params ###########################################################
+#dataset_name: [la_point, bay_point, la_bock, bay_bock, air, air36]
+val_len: 0.1
+
+window: 24  
+stride: 1
+
+#### Training params ##########################################################
+whiten_prob: [0.2, 0.5, 0.8]
+scale_target: True
+
+epochs: 200
+loss_fn: l1_loss
+lr_scheduler: magic
+lr: 0.0008
+patience: 20
+precision: 16
+batch_size: 4 
+split_batch_in: 2
+batches_epoch: 300
+batch_inference: 16 
+
+#### Model params #############################################################
+model_name: 'spin'
+hidden_size: 32 
+eta: 3
+n_layers: 2 
+message_layers: 1
+temporal_self_attention: True
+reweight: 'softmax'

@@ -1,0 +1,50 @@
+#### Dataset params ###########################################################
+dataset_name: la
+window: 24
+window_lag: 1
+horizon_lag: 1
+stride: 1
+test_len: 0.2
+val_len: 0.1
+
+
+#### Model params #############################################################
+model_name: imputeformer
+num_nodes: 207
+input_dim: 3
+output_dim: 1
+input_embedding_dim: 32 
+learnable_embedding_dim: 96  
+feed_forward_dim: 256
+num_temporal_heads: 4
+num_layers: 3
+dim_proj: 8
+dropout: 0.1
+f1_loss_weight: 0.01
+
+
+#### Training params ##########################################################
+batch_inference: 32
+batch_size: 32 
+batches_epoch: 300
+split_batch_in: 1
+epochs: 300
+patience: 20
+precision: 16
+prediction_loss_weight: 1.0
+grad_clip_val: 5.0
+l2_reg: 0.0
+scale_target: true
+loss_fn: l1_loss
+lr: 0.001
+lr_scheduler: magic
+seed: 42
+workers: 0
+whiten_prob:
+- 0.2
+- 0.5
+- 0.8
+
+
+
+
