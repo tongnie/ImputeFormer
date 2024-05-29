@@ -5,6 +5,13 @@
 
 **[Updata 20240526]: We will release the full model training and evaluation codes soon after carefully preparing the final version.**
 
+<div align=center>
+	<img src="./sparse_att.png" alt="Example of the sparse spatiotemporal attention layer."/>
+	<p align=left style="color: #777">Example of the sparse spatiotemporal attention layer. On the left, the input spatiotemporal graph, with time series associated with every node. On the right, how the layer acts to update target representation (highlighted by the green box), by simultaneously performing inter-node spatiotemporal cross-attention (red block) and intra-node temporal self-attention (violet block).</p>
+</div>
+
+---
+
 
 
 ## Google Scholar
