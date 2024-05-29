@@ -14,3 +14,7 @@ If you find this code useful please consider to cite our paper:
   year={2023}
 }
 ```
+
+## Acknowledgement
+
+We acknowledge [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) for providing a useful benchmark tool.
