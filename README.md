@@ -12,6 +12,36 @@
 
 ---
 
+---
+
+## Directory structure
+
+The directory is structured as follows:
+
+```
+.
+├── config/
+│   ├── imputation/
+│   │── Imputeformer.yaml
+│   │── brits.yaml
+│   │── grin.yaml
+│   │── saits.yaml
+│   │── spin.yaml
+│   └── transformer.yaml
+├── experiments/
+│   └── run_imputation.py
+├── spin/
+│   ├── baselines/
+│   ├── imputers/
+│   ├── layers/
+│   ├── models/
+│   └── ...
+├── conda_env.yaml
+└── tsl_config.yaml
+
+```
+
+## Get Started
 
 
 ## Google Scholar
