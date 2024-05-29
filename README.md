@@ -2,3 +2,15 @@
 
 Low Rankness-Induced Transformers for Spatiotemporal Imputation.
 
+## Bibtex reference
+
+If you find this code useful please consider to cite our paper:
+
+```
+@article{nie2023imputeformer,
+  title={ImputeFormer: Low Rankness-Induced Transformers for Generalizable Spatiotemporal Imputation},
+  author={Nie, Tong and Qin, Guoyang and Ma, Wei and Mei, Yuewen and Sun, Jian},
+  journal={arXiv preprint arXiv:2312.01728},
+  year={2023}
+}
+```
