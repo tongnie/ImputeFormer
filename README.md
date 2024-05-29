@@ -1,6 +1,6 @@
 # <div align="center">[KDD-24] ImputeFormer: Low Rankness-Induced Transformers for Generalizable Spatiotemporal Imputation </div>
 
-# [Updata 20240526]: We will release the full model training and evaluation codes soon after carefully preparing the final version.
+**[Updata 20240526]: We will release the full model training and evaluation codes soon after carefully preparing the final version.**
 
 
 
