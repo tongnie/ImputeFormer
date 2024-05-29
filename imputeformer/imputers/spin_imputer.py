@@ -1,20 +1,21 @@
 from typing import Type, Mapping, Callable, Optional, Union, List
+
 import torch
-from einops import rearrange
 from torchmetrics import Metric
 from tsl.imputers import Imputer
 from tsl.predictors import Predictor
+
 from ..utils import k_hop_subgraph_sampler
 
 
-class ImputeFormerImputer(Imputer):
+class SPINImputer(Imputer):
+
     def __init__(self,
                  model_class: Type,
                  model_kwargs: Mapping,
                  optim_class: Type,
                  optim_kwargs: Mapping,
                  loss_fn: Callable,
-                 f1_loss_weight: float,   # default = 0.01,
                  scale_target: bool = True,
                  whiten_prob: Union[float, List[float]] = 0.2,
                  n_roots_subgraph: Optional[int] = None,
@@ -25,7 +26,7 @@ class ImputeFormerImputer(Imputer):
                  metrics: Optional[Mapping[str, Metric]] = None,
                  scheduler_class: Optional = None,
                  scheduler_kwargs: Optional[Mapping] = None):
-        super(ImputeFormerImputer, self).__init__(model_class=model_class,
+        super(SPINImputer, self).__init__(model_class=model_class,
                                           model_kwargs=model_kwargs,
                                           optim_class=optim_class,
                                           optim_kwargs=optim_kwargs,
@@ -40,65 +41,21 @@ class ImputeFormerImputer(Imputer):
         self.n_hops = n_hops
         self.max_edges_subgraph = max_edges_subgraph
         self.cut_edges_uniformly = cut_edges_uniformly
-        self.f1_loss_weight = f1_loss_weight
 
     def on_after_batch_transfer(self, batch, dataloader_idx):
         if self.training and self.n_roots is not None:
             batch = k_hop_subgraph_sampler(batch, self.n_hops, self.n_roots,
                                            max_edges=self.max_edges_subgraph,
                                            cut_edges_uniformly=self.cut_edges_uniformly)
-        return super(ImputeFormerImputer, self).on_after_batch_transfer(batch,
+        return super(SPINImputer, self).on_after_batch_transfer(batch,
                                                                 dataloader_idx)
-
-    def Freg(self, y_hat, y, mask):
-        """
-        Fourier sparsity loss function for imputation
-        """
-        # mask: indicating whether the data point is masked for evaluation
-        # calculate F-reg on batch.eval_mask (True is masked as unobserved)
-        y_tilde = torch.where(mask.bool(), y_hat, y)
-        y_tilde = torch.fft.fftn(y_tilde)
-        y_tilde = rearrange(y_tilde, 'b s n c -> b (s n c)')
-        f1loss = torch.mean(torch.sum(torch.abs(y_tilde), axis=1) / y_tilde.numel())
-        return f1loss
-
-    def shared_step_(self, batch, mask):
-        y = y_loss = batch.y
-        y_hat = y_hat_loss = self.predict_batch(batch, preprocess=False,
-                                                postprocess=not self.scale_target)
-
-        if self.scale_target:
-            y_loss = batch.transform['y'].transform(y)
-            y_hat = batch.transform['y'].inverse_transform(y_hat)
-
-        y_hat_loss, y_loss, mask = self.trim_warm_up(y_hat_loss, y_loss, mask)
-
-        if isinstance(y_hat_loss, (list, tuple)):
-            imputation, predictions = y_hat_loss
-            y_hat = y_hat[0]
-        else:
-            imputation, predictions = y_hat_loss, []
-
-        loss = self.loss_fn(imputation, y_loss, mask)
-
-        # Add the Fourier sparsity loss
-        o_mask = batch.original_mask
-        loss_f = self.Freg(imputation, y_loss, o_mask)
-        loss += self.f1_loss_weight * loss_f
-
-
-        for pred in predictions:
-            pred_loss = self.loss_fn(pred, y_loss, mask)
-            loss += self.prediction_loss_weight * pred_loss
-
-        return y_hat.detach(), y, loss
 
     def training_step(self, batch, batch_idx):
         injected_missing = (batch.original_mask - batch.mask)
         if 'target_nodes' in batch:
             injected_missing = injected_missing[..., batch.target_nodes, :]
         # batch.input.target_mask = injected_missing
-        y_hat, y, loss = self.shared_step_(batch, mask=injected_missing)
+        y_hat, y, loss = self.shared_step(batch, mask=injected_missing)
 
         # Logging
         self.train_metrics.update(y_hat, y, batch.eval_mask)
@@ -139,7 +96,6 @@ class ImputeFormerImputer(Imputer):
     def add_argparse_args(parser, **kwargs):
         parser = Predictor.add_argparse_args(parser)
         parser.add_argument('--whiten-prob', type=float, default=0.05)
-        parser.add_argument('--f1-loss-weight', type=float, default=0.01)
         parser.add_argument('--prediction-loss-weight', type=float, default=1.0)
         parser.add_argument('--n-roots-subgraph', type=int, default=None)
         parser.add_argument('--n-hops', type=int, default=2)
