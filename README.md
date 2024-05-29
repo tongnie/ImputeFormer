@@ -42,7 +42,12 @@ The directory is structured as follows:
 ```
 
 ## Get Started
+Following the instructions in [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) and [tsl](https://github.com/TorchSpatiotemporal), the project dependencies can be installed:
 
+```bash
+conda env create -f conda_env.yml
+conda activate spin
+```
 
 ## Google Scholar
 **Due to the minor change of ImputeFormer's title, you can simply search for "ImputeFormer" in Google Scholar to get our latest version. Citation information is automatically updated as the proceedings become available.**
