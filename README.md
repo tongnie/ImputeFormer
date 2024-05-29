@@ -5,7 +5,7 @@
 
 
 ## Google Scholar
-**Due to the minor change of ImputeFormer's title, you can simply search for "ImputeFormer" in Google Scholar to get our latest version. The citation information will be automatically updated after the proceedings are available.**
+**Due to the minor change of ImputeFormer's title, you can simply search for "ImputeFormer" in Google Scholar to get our latest version. Citation information is automatically updated as the proceedings become available.**
 
 ## Bibtex reference
 
