@@ -30,7 +30,7 @@ The directory is structured as follows:
 │   └── transformer.yaml
 ├── experiments/
 │   └── run_imputation.py
-├── spin/
+├── Imputeformer/
 │   ├── baselines/
 │   ├── imputers/
 │   ├── layers/
