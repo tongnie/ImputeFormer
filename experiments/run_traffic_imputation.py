@@ -12,7 +12,6 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from tsl import config, logger
 from tsl.data import SpatioTemporalDataModule, ImputationDataset
 from tsl.data.preprocessing import StandardScaler
-from tsl.datasets import AirQuality, MetrLA, PemsBay
 from tsl.imputers import Imputer
 from tsl.nn.metrics import MaskedMetric, MaskedMAE, MaskedMSE, MaskedMRE
 from tsl.nn.models.imputation import GRINModel
@@ -21,19 +20,17 @@ from tsl.ops.imputation import add_missing_values
 from tsl.utils import parser_utils, numpy_metrics
 from tsl.utils.parser_utils import ArgParser
 
-from spin.baselines import SAITS, TransformerModel, BRITS
-from spin.imputers import SPINImputer, SAITSImputer, BRITSImputer
-from spin.models import SPINModel, SPINHierarchicalModel
-from spin.scheduler import CosineSchedulerWithRestarts
-from ImputeFormer import ImputeFormer
-from imputer import ImputeFormerImputer
+from imputeformer.baselines import SAITS, TransformerModel, BRITS, SPINModel
+from imputeformer.imputers import SPINImputer, SAITSImputer, BRITSImputer
+from imputeformer.models import ImputeFormer
+from imputeformer.scheduler import CosineSchedulerWithRestarts
+from imputeformer.imputers import ImputeFormerImputer
+from imputeformer.datasets import AirQuality, MetrLA, PemsBay, PeMS03, PeMS04, PeMS07, PeMS08, SolarBenchmark, Elergone, ElectricityBenchmark, CEREn
 
 
 def get_model_classes(model_str):
     if model_str == 'spin':
         model, filler = SPINModel, SPINImputer
-    elif model_str == 'spin_h':
-        model, filler = SPINHierarchicalModel, SPINImputer
     elif model_str == 'grin':
         model, filler = GRINModel, Imputer
     elif model_str == 'saits':
@@ -59,6 +56,9 @@ def get_dataset(dataset_name: str):
     elif dataset_name.endswith('_block'):
         p_fault, p_noise = 0.0015, 0.05
         dataset_name = dataset_name[:-6]
+    elif dataset_name.endswith('_sparse'):
+        p_fault, p_noise = 0., 0.9  # 0.6 0.7, 0.8, 0.9
+        dataset_name = dataset_name[:-7]
     else:
         raise ValueError(f"Invalid dataset name: {dataset_name}.")
     if dataset_name == 'la':
@@ -67,7 +67,32 @@ def get_dataset(dataset_name: str):
     if dataset_name == 'bay':
         return add_missing_values(PemsBay(), p_fault=p_fault, p_noise=p_noise,
                                   min_seq=12, max_seq=12 * 4, seed=56789)
-    raise ValueError(f"Invalid dataset name: {dataset_name}.")
+    if dataset_name == 'pems03':
+        return add_missing_values(PeMS03(mask_zeros=True), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'pems04':
+        return add_missing_values(PeMS04(mask_zeros=True), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'pems07':
+        return add_missing_values(PeMS07(mask_zeros=True), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'pems08':
+        return add_missing_values(PeMS08(mask_zeros=True), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'elergone':
+        return add_missing_values(Elergone(), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'solar':
+        return add_missing_values(SolarBenchmark(), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'ecl':
+        return add_missing_values(ElectricityBenchmark(), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    if dataset_name == 'cer':
+        return add_missing_values(CEREn(), p_fault=p_fault, p_noise=p_noise,
+                                  min_seq=12, max_seq=12 * 4, seed=56789)
+    else:
+        raise ValueError(f"Invalid dataset name: {dataset_name}.")
 
 
 def get_scheduler(scheduler_name: str = None, args=None):
