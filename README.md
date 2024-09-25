@@ -1,6 +1,6 @@
 # <div align="center">[KDD-24] ImputeFormer: Low Rankness-Induced Transformers for Generalizable Spatiotemporal Imputation </div>
 
-[![KDD](https://img.shields.io/badge/KDD-2024-blue.svg?style=flat-square)](#)
+[![KDD](https://img.shields.io/badge/KDD-2024-blue.svg?style=flat-square)](https://dl.acm.org/doi/abs/10.1145/3637528.3671751)
 [![arXiv](https://img.shields.io/static/v1?label=arXiv&message=ImputeFormer&color=red&logo=arxiv)](https://arxiv.org/abs/2312.01728)
 
 
@@ -77,8 +77,6 @@ The experiment scripts are in the `experiments` folder.
 	```
 
 
-## Google Scholar
-**Due to the minor change of ImputeFormer's title, you can simply search for "ImputeFormer" in Google Scholar to get our latest version. Citation information is automatically updated as the proceedings become available.**
 
 ## Bibtex reference
 
