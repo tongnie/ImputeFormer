@@ -12,9 +12,9 @@ from tsl import logger
 from . import checks
 from .dataset import Dataset
 from .mixin import TemporalFeaturesMixin, PandasParsingMixin
-from ...ops.dataframe import aggregate
-from ...typing import FrameArray, OptFrameArray
-from ...utils.python_utils import ensure_list
+from tsl.ops.dataframe import aggregate
+from tsl.typing import FrameArray, OptFrameArray
+from tsl.utils.python_utils import ensure_list
 
 
 class PandasDataset(Dataset, PandasParsingMixin, TemporalFeaturesMixin):

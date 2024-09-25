@@ -10,7 +10,7 @@ from tsl.nn.base import StaticGraphEmbedding
 from tsl.nn.blocks.encoders import MLP, ResidualMLP
 from tsl.nn.blocks.encoders.transformer import SpatioTemporalTransformerLayer, \
     TransformerLayer, Transformer
-from ..layers import PositionalEncoder, TemporalGraphAdditiveAttention
+from .spin_layers import PositionalEncoder, TemporalGraphAdditiveAttention
 from tsl.nn.layers.graph_convs.dense_graph_conv import DenseGraphConvOrderK
 from tsl.nn.layers.graph_convs import GatedGraphNetwork
 from tsl.nn.models.stgn.gated_gn_model import GatedGraphNetworkModel

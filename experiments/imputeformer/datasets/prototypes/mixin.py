@@ -6,10 +6,10 @@ from tsl import logger
 from . import checks
 from . import casting
 from tsl.ops.dataframe import to_numpy
-from ...typing import FrameArray
-from ...utils.python_utils import ensure_list
-from ...ops.framearray import framearray_shape, framearray_to_numpy
-from ...ops.pattern import check_pattern, infer_pattern
+from tsl.typing import FrameArray
+from tsl.utils.python_utils import ensure_list
+from tsl.ops.framearray import framearray_shape, framearray_to_numpy
+from tsl.ops.pattern import check_pattern, infer_pattern
 
 
 class TabularParsingMixin:

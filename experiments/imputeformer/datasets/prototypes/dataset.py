@@ -18,13 +18,13 @@ from torch import TensorType
 
 import tsl
 from tsl import logger, config
-from ...data.datamodule import splitters, Splitter
-from ...ops.similarities import top_k
+from tsl.data.datamodule import splitters, Splitter
+from tsl.ops.similarities import top_k
 from tsl.ops.connectivity import adj_to_edge_index
-from ...typing import ScipySparseMatrix
-from ...utils import preprocessing
-from ...utils.io import save_pickle, load_pickle
-from ...utils.python_utils import ensure_list, files_exist, hash_dict
+from tsl.typing import ScipySparseMatrix
+from tsl.utils import preprocessing
+from tsl.utils.io import save_pickle, load_pickle
+from tsl.utils.python_utils import ensure_list, files_exist, hash_dict
 
 
 class Dataset(object):

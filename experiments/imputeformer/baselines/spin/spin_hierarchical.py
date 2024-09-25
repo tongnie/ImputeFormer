@@ -8,7 +8,7 @@ from torch_geometric.typing import OptTensor
 from tsl.nn.base import StaticGraphEmbedding
 from tsl.nn.blocks.encoders import MLP
 
-from ..layers import PositionalEncoder, HierarchicalTemporalGraphAttention
+from .spin_layers import PositionalEncoder, HierarchicalTemporalGraphAttention
 
 
 class SPINHierarchicalModel(nn.Module):

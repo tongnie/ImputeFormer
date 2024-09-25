@@ -11,7 +11,7 @@ from tsl.ops.similarities import geographical_distance
 from tsl.utils import download_url, extract_zip
 from .prototypes import PandasDataset
 from .prototypes.mixin import MissingValuesMixin
-from ..data.utils import HORIZON
+from tsl.data.utils import HORIZON
 
 
 def infer_mask(df, infer_from='next'):

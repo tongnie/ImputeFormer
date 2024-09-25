@@ -5,8 +5,8 @@ import pandas as pd
 
 from tsl import logger
 from .prototypes import DatetimeDataset
-from ..ops.similarities import gaussian_kernel
-from ..utils import download_url, extract_zip
+from tsl.ops.similarities import gaussian_kernel
+from tsl.utils import download_url, extract_zip
 
 
 class MetrLA(DatetimeDataset):

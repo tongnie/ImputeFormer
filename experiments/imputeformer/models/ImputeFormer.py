@@ -3,7 +3,7 @@ import torch
 from tsl.nn import utils
 from tsl.nn.blocks.encoders import MLP
 from einops import repeat
-from Attention_layers import AttentionLayer, SelfAttentionLayer, EmbeddedAttention
+from .Attention_layers import AttentionLayer, SelfAttentionLayer, EmbeddedAttention
 
 
 

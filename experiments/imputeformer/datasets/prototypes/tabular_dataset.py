@@ -15,7 +15,7 @@ from tsl.utils.python_utils import ensure_list
 from . import casting
 from .dataset import Dataset
 from .mixin import TabularParsingMixin
-from ...ops.pattern import outer_pattern, broadcast
+from tsl.ops.pattern import outer_pattern, broadcast
 
 
 class TabularDataset(Dataset, TabularParsingMixin):
