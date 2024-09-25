@@ -79,7 +79,7 @@ class ProjectedAttentionLayer(nn.Module):
         return message
 
 
-class ImputeFormer(nn.Module):
+class ImputeFormerModel(nn.Module):
     """
     Spatiotempoarl Imputation Transformer
     """
@@ -97,7 +97,7 @@ class ImputeFormer(nn.Module):
             windows=24,
             dim_proj=10,
     ):
-        super().__init__()
+        super(ImputeFormerModel, self).__init__()
 
         self.num_nodes = num_nodes
         self.in_steps = windows

@@ -14,18 +14,19 @@ from tsl.data import SpatioTemporalDataModule, ImputationDataset
 from tsl.data.preprocessing import StandardScaler
 from tsl.imputers import Imputer
 from tsl.nn.metrics import MaskedMetric, MaskedMAE, MaskedMSE, MaskedMRE
-from tsl.nn.models.imputation import GRINModel
 from tsl.nn.utils import casting
 from tsl.ops.imputation import add_missing_values
 from tsl.utils import parser_utils, numpy_metrics
 from tsl.utils.parser_utils import ArgParser
 
 from imputeformer.baselines import SAITS, TransformerModel, BRITS, SPINModel
+from tsl.nn.models.imputation import GRINModel
 from imputeformer.imputers import SPINImputer, SAITSImputer, BRITSImputer
-from imputeformer.models import ImputeFormer
+from imputeformer.models import ImputeFormerModel
 from imputeformer.scheduler import CosineSchedulerWithRestarts
 from imputeformer.imputers import ImputeFormerImputer
-from imputeformer.datasets import AirQuality, MetrLA, PemsBay, PeMS03, PeMS04, PeMS07, PeMS08, SolarBenchmark, Elergone, ElectricityBenchmark, CEREn
+from imputeformer.datasets import AirQuality, MetrLA, PemsBay, PeMS03, PeMS04, PeMS07, PeMS08, SolarBenchmark, Elergone,\
+     ElectricityBenchmark, CEREn
 
 
 def get_model_classes(model_str):
@@ -40,7 +41,7 @@ def get_model_classes(model_str):
     elif model_str == 'brits':
         model, filler = BRITS, BRITSImputer
     elif model_str == 'imputeformer':
-        model, filler = ImputeFormer, ImputeFormerImputer
+        model, filler = ImputeFormerModel, ImputeFormerImputer
     else:
         raise ValueError(f'Model {model_str} not available.')
     return model, filler

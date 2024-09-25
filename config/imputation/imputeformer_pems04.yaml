@@ -1,5 +1,4 @@
 #### Dataset params ###########################################################
-dataset_name: pems04
 window: 24
 window_lag: 1
 horizon_lag: 1

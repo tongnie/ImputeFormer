@@ -11,7 +11,7 @@ from tqdm import tqdm
 from tsl.datasets.prototypes import PandasDataset, DatetimeDataset
 from tsl.utils import download_url, extract_zip
 
-from .. import config
+from tsl import config
 
 START = datetime(2008, 12, 31, 0, 0)
 ID_COL = 'id'
