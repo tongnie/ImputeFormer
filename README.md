@@ -3,7 +3,15 @@
 [![KDD](https://img.shields.io/badge/KDD-2024-blue.svg?style=flat-square)](#)
 [![arXiv](https://img.shields.io/static/v1?label=arXiv&message=ImputeFormer&color=red&logo=arxiv)](https://arxiv.org/abs/2312.01728)
 
-**[Updata 20240526]: We will release the full model training and evaluation codes soon after carefully preparing the final version.**
+
+**‼️[News 202407][PyPOTS implementation of [ImputeFormer](https://github.com/WenjieDu/PyPOTS/tree/main/pypots/imputation/imputeformer) is now available inside [PyPOTS](https://github.com/WenjieDu/PyPOTS), an open-source Python library for reality-centric machine/deep learning and data mining on partially-observed time series. The ecosystem of PyPOTS supports a comprehensive benchmark of imputation tasks.**
+
+**Our official implementation based on [Torch Spatiotemporal](https://github.com/TorchSpatiotemporal/tsl) will also be made available soon!!**
+
+---
+
+
+<h2 align=center>Imputeformer in a nutshell</h2>
 
 <div align=center>
 	<img src="./Imputeformer_introduction.png" alt="Example of the sparse spatiotemporal attention layer."/>
