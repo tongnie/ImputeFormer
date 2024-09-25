@@ -77,11 +77,21 @@ The experiment scripts are in the `experiments` folder.
 If you find this code useful please consider to cite our paper:
 
 ```
-@article{nie2023imputeformer,
-  title={ImputeFormer: Low Rankness-Induced Transformers for Generalizable Spatiotemporal Imputation},
-  author={Nie, Tong and Qin, Guoyang and Ma, Wei and Mei, Yuewen and Sun, Jian},
-  journal={arXiv preprint arXiv:2312.01728},
-  year={2023}
+@inproceedings{10.1145/3637528.3671751,
+author = {Nie, Tong and Qin, Guoyang and Ma, Wei and Mei, Yuewen and Sun, Jian},
+title = {ImputeFormer: Low Rankness-Induced Transformers for Generalizable Spatiotemporal Imputation},
+year = {2024},
+isbn = {9798400704901},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3637528.3671751},
+doi = {10.1145/3637528.3671751},
+booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+pages = {2260–2271},
+numpages = {12},
+keywords = {data imputation, low-rank modeling, missing data, spatiotemporal data, time series, transformers},
+location = {Barcelona, Spain},
+series = {KDD '24}
 }
 ```
 
