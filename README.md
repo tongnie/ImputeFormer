@@ -9,7 +9,7 @@
 
 **‼️[News 202407][PyPOTS implementation of [ImputeFormer](https://github.com/WenjieDu/PyPOTS/tree/main/pypots/imputation/imputeformer) is now available inside [PyPOTS](https://github.com/WenjieDu/PyPOTS), an open-source Python library for reality-centric machine/deep learning and data mining on partially-observed time series. The ecosystem of PyPOTS supports a comprehensive benchmark of imputation tasks.**
 
-**Our official implementation based on [Torch Spatiotemporal](https://github.com/TorchSpatiotemporal/tsl) will also be made available soon!!**
+**‼️Our official implementation based on [Torch Spatiotemporal](https://github.com/TorchSpatiotemporal/tsl) is available now!!**
 
 ---
 
@@ -23,7 +23,7 @@
 
 ---
 <div align=center>
-	<img src="./kdd_poster.pdf" alt=/>
+	<img src="./kdd_poster.png"/>
 	<p align=left style="color: #777"></p>
 </div>
 ---
