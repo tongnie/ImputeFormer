@@ -22,10 +22,11 @@
 </div>
 
 ---
-<div align=center>
-	<img src="./kdd_poster.png"/>
-	<p align=left style="color: #777"></p>
+<div align="center">
+    <img src="./kdd_poster.png" width="300" height="auto" />
+    <p align="left" style="color: #777"></p>
 </div>
+
 ---
 
 ## Directory structure
