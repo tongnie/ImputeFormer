@@ -15,10 +15,10 @@ from tsl.data.preprocessing import StandardScaler
 from tsl.imputers import Imputer
 from tsl.nn.metrics import MaskedMetric, MaskedMAE, MaskedMSE, MaskedMRE
 from tsl.nn.utils import casting
-from tsl.ops.imputation import add_missing_values
 from tsl.utils import parser_utils, numpy_metrics
 from tsl.utils.parser_utils import ArgParser
 
+from imputeformer.imputation_ops import add_missing_values
 from imputeformer.baselines import SAITS, TransformerModel, BRITS, SPINModel
 from tsl.nn.models.imputation import GRINModel
 from imputeformer.imputers import SPINImputer, SAITSImputer, BRITSImputer
@@ -170,8 +170,6 @@ def run_experiment(args):
     pl.seed_everything(args.seed)
 
     # script flags
-    is_spin = args.model_name in ['spin', 'spin_h']
-
     model_cls, imputer_class = get_model_classes(args.model_name)
     dataset = get_dataset(args.dataset_name)
 
@@ -196,8 +194,17 @@ def run_experiment(args):
     ########################################
 
     # time embedding
+    is_spin = args.model_name in ['spin', 'spin_h']
     if is_spin or args.model_name == 'transformer':
         time_emb = dataset.datetime_encoded(['day', 'week']).values
+        exog_map = {'global_temporal_encoding': time_emb}
+
+        input_map = {
+            'u': 'temporal_encoding',
+            'x': 'data'
+        }
+    elif args.model_name == 'imputeformer':
+        time_emb = dataset.datetime_encoded(['day']).values
         exog_map = {'global_temporal_encoding': time_emb}
 
         input_map = {
@@ -211,6 +218,11 @@ def run_experiment(args):
         adj = dataset.get_connectivity(threshold=args.adj_threshold,
                                        include_self=False,
                                        force_symmetric=is_spin)
+    elif args.model_name == 'mpgru' or args.model_name == 'bimpgru':
+        # get adjacency matrix
+        adj = dataset.get_similarity(thr=args.adj_threshold)
+        # force adj with no self loop
+        np.fill_diagonal(adj, 0.)
     else:
         adj = None
 

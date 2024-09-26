@@ -8,7 +8,7 @@ import pandas as pd
 import pandas.tseries.frequencies as pd_freq
 import tsl
 from tqdm import tqdm
-from tsl.datasets.prototypes import PandasDataset, DatetimeDataset
+from .prototypes import PandasDataset, DatetimeDataset
 from tsl.utils import download_url, extract_zip
 
 from tsl import config

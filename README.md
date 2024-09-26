@@ -3,6 +3,9 @@
 [![KDD](https://img.shields.io/badge/KDD-2024-blue.svg?style=flat-square)](https://dl.acm.org/doi/abs/10.1145/3637528.3671751)
 [![arXiv](https://img.shields.io/static/v1?label=arXiv&message=ImputeFormer&color=red&logo=arxiv)](https://arxiv.org/abs/2312.01728)
 
+**[News 202409] Our work has received a lot of feedbacks from the KDD community in Barcelona. Many thanks for your suggestions!**
+
+**[News 202408] Our work has reported by [“时空探索之旅”](https://mp.weixin.qq.com/s/Bw1FE0KW--Wmjk2BlXXNGw). Feel free to discuss it with us!**
 
 **‼️[News 202407][PyPOTS implementation of [ImputeFormer](https://github.com/WenjieDu/PyPOTS/tree/main/pypots/imputation/imputeformer) is now available inside [PyPOTS](https://github.com/WenjieDu/PyPOTS), an open-source Python library for reality-centric machine/deep learning and data mining on partially-observed time series. The ecosystem of PyPOTS supports a comprehensive benchmark of imputation tasks.**
 

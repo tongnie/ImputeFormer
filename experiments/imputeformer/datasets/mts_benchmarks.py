@@ -4,7 +4,7 @@ import os
 
 import tsl
 from tsl.utils import download_url
-from tsl.datasets.prototypes import PandasDataset, DatetimeDataset
+from .prototypes import PandasDataset, DatetimeDataset
 
 
 class _MTSBenchmarkDataset(DatetimeDataset):

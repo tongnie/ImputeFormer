@@ -138,7 +138,7 @@ class ImputeFormerModel(nn.Module):
         x = utils.maybe_cat_exog(x, u)
         x = self.input_proj(x)  # (batch_size, in_steps, num_nodes, input_embedding_dim)
 
-        node_emb = self.learnable_embedding.expand(batch_size, *self.adaptive_embedding.shape)
+        node_emb = self.learnable_embedding.expand(batch_size, *self.learnable_embedding.shape)
         x = torch.cat([x, node_emb], dim=-1)  # (batch_size, in_steps, num_nodes, model_dim)
 
         x = x.permute(0, 2, 1, 3)  # [b n s c]

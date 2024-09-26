@@ -7,7 +7,7 @@ import os
 import tsl
 from tsl.utils import download_url, extract_zip
 from tsl.datasets.prototypes import checks
-from tsl.datasets.prototypes import PandasDataset, DatetimeDataset
+from .prototypes import PandasDataset, DatetimeDataset
 from tsl.ops import similarities as sims
 
 
