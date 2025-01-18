@@ -44,7 +44,7 @@ The directory is structured as follows:
 │   │── spin.yaml
 │   └── transformer.yaml
 ├── experiments/
-│   └── run_imputation.py
+│   └── run_spatiotemporal_imputation.py
 ├── Imputeformer/
 │   ├── baselines/
 │   ├── imputers/
@@ -57,6 +57,7 @@ The directory is structured as follows:
 ```
 
 ## Get Started
+**‼️ Note that we now include the modified tsl package in this repository so there is no need to install tsl**
 Following the instructions in [SPIN](https://github.com/Graph-Machine-Learning-Group/spin) and [tsl](https://github.com/TorchSpatiotemporal), the project dependencies can be installed:
 
 ```bash
@@ -73,7 +74,7 @@ The experiment scripts are in the `experiments` folder.
 
 	```bash
 	conda activate imputeformer
-	python ./experiments/run_imputation.py --config imputation/imputeformer_la.yaml --model-name imputeformer --dataset-name la_block
+	python ./experiments/run_spatiotemporal_imputation.py --config imputation/imputeformer_la.yaml --model-name imputeformer --dataset-name la_block
 	```
 
 * `run_inference.py` is used for inference only using pre-trained models. An example of usage is
