@@ -9,7 +9,6 @@ import yaml
 from tsl import config
 from tsl.data import SpatioTemporalDataModule, ImputationDataset
 from tsl.data.preprocessing import StandardScaler
-from tsl.datasets import AirQuality, MetrLA, PemsBay
 from tsl.imputers import Imputer
 from tsl.nn.models.imputation import GRINModel
 from tsl.nn.utils import casting
@@ -20,6 +19,15 @@ from tsl.utils.python_utils import ensure_list
 from imputeformer.baselines import SAITS, TransformerModel, BRITS, SPINModel
 from imputeformer.imputers import SPINImputer, SAITSImputer, BRITSImputer, ImputeFormerImputer
 from imputeformer.models import ImputeFormer
+from imputeformer.imputation_ops import add_missing_values
+from imputeformer.baselines import SAITS, TransformerModel, BRITS, SPINModel
+from tsl.nn.models.imputation import GRINModel
+from imputeformer.imputers import SPINImputer, SAITSImputer, BRITSImputer
+from imputeformer.models import ImputeFormerModel
+from imputeformer.scheduler import CosineSchedulerWithRestarts
+from imputeformer.imputers import ImputeFormerImputer
+from imputeformer.datasets import AirQuality, MetrLA, PemsBay, PeMS03, PeMS04, PeMS07, PeMS08, SolarBenchmark, Elergone,\
+     ElectricityBenchmark, CEREn
 
 
 def get_model_classes(model_str):
@@ -180,8 +188,8 @@ def run_experiment(args):
     ########################################
 
     # time embedding
-    if is_spin or args.model_name == 'transformer' or args.model_name == 'gat_transformer' \
-            or args.model_name == 'gconv_transformer' or args.model_name == 'myspin':
+    if is_spin or args.model_name == 'transformer' or args.model_name == 'spin' \
+            or args.model_name == 'gconv_transformer' or args.model_name == 'imputeformer':
         time_emb = dataset.datetime_encoded(['day', 'week']).values
         exog_map = {'global_temporal_encoding': time_emb}
 
@@ -192,8 +200,8 @@ def run_experiment(args):
     else:
         exog_map = input_map = None
 
-    if is_spin or args.model_name == 'grin' or args.model_name == 'gat_transformer' \
-            or args.model_name == 'gconv_transformer' or args.model_name == 'myspin':
+    if is_spin or args.model_name == 'grin' or args.model_name == 'spin' \
+            or args.model_name == 'gconv_transformer' or args.model_name == 'imputeformer':
         adj = dataset.get_connectivity(threshold=args.adj_threshold,
                                        include_self=False,
                                        force_symmetric=is_spin)
