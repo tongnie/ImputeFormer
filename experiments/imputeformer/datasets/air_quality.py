@@ -94,8 +94,7 @@ class AirQuality(PandasDataset, MissingValuesMixin):
     2015.
 
     See more at https://www.microsoft.com/en-us/research/project/urban-air/"""
-    # url = "https://drive.switch.ch/index.php/s/W0fRqotjHxIndPj/download"
-    url = "https://drive.google.com/uc?export=download&id=1r5nfjxZgKXB3GOKFxgQX9e7hsA_W-Cg0" # Google Drive
+    url = "https://drive.switch.ch/index.php/s/W0fRqotjHxIndPj/download"
 
     similarity_options = {'distance'}
     temporal_aggregation_options = {'mean', 'nearest'}
