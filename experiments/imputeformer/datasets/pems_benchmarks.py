@@ -133,7 +133,7 @@ class PeMS03(_PeMS):
     name = 'PeMS03'
     start_date = '09-01-2018 00:00'
     num_sensors = 358
-    # url = 'https://drive.switch.ch/index.php/s/B5xDMtNs4M7pzsn/download'
+    # url = 'https://drive.switch.ch/index.php/s/z4cMrY19EMN7AZA/download'
     url = "https://drive.google.com/uc?export=download&id=1_aPBaJhGcqpnU5laFPkDsRXNZmZc68qW" # Google Drive
 
     @property
@@ -260,7 +260,7 @@ class PeMS08(_PeMS):
     name = 'PeMS08'
     start_date = '07-01-2016 00:00'
     num_sensors = 170
-    # url = 'https://drive.switch.ch/index.php/s/AUGNn9Rx9zMz3vg/download'
+    # url = 'https://drive.switch.ch/index.php/s/X0nkiDgb8oacOD0/download'
     url = 'https://drive.google.com/uc?export=download&id=1jpD1jMjWBbt7wRkZnqGh_voHPjvLZx-X' # Google Drive
 
     @property
