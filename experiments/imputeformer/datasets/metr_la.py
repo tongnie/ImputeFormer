@@ -28,7 +28,8 @@ class MetrLA(DatetimeDataset):
     Static attributes:
         + :obj:`dist`: :math:`N \times N` matrix of node pairwise distances.
     """
-    url = "https://drive.switch.ch/index.php/s/Z8cKHAVyiDqkzaG/download"
+    # url = "https://drive.switch.ch/index.php/s/Z8cKHAVyiDqkzaG/download"
+    url = "https://drive.google.com/uc?export=download&id=1_YA00eMg3RQrTLQpp2MjidbuePfWl47m" # Google Drive
 
     similarity_options = {'distance'}
 
