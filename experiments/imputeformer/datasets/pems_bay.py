@@ -31,7 +31,8 @@ class PemsBay(DatetimeDataset):
         + :obj:`dist`: :math:`N \times N` matrix of node pairwise distances.
     """
 
-    url = "https://drive.switch.ch/index.php/s/5NPcgGFAIJ4oFcT/download"
+    # url = "https://drive.switch.ch/index.php/s/5NPcgGFAIJ4oFcT/download"
+    url = "https://drive.google.com/uc?export=download&id=1cOv2hjeXdvkDbDPT6p97s2NpVXFOADbj" # Google Drive
 
     similarity_options = {'distance', 'stcn'}
 
