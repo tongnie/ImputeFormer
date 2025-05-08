@@ -133,7 +133,8 @@ class PeMS03(_PeMS):
     name = 'PeMS03'
     start_date = '09-01-2018 00:00'
     num_sensors = 358
-    url = 'https://drive.switch.ch/index.php/s/B5xDMtNs4M7pzsn/download'
+    # url = 'https://drive.switch.ch/index.php/s/B5xDMtNs4M7pzsn/download'
+    url = "https://drive.google.com/uc?export=download&id=1_aPBaJhGcqpnU5laFPkDsRXNZmZc68qW"
 
     @property
     def raw_file_names(self):
